@@ -5,17 +5,19 @@
     const presupuesto = ref(0)
     const error = ref('');
 
-    cons emit defineEmits('definirPresupuesto')
+    const emit = defineEmits('definirPresupuesto')
     
     const definirPresupuesto = () => {
-        if(presupuesto.value <= 0){
-            console.log('Presupuesto no valido');
+        if(presupuesto.value <= 0 || presupuesto.value === ''){
             error.value = 'Presupuesto no valido';
+            
+            setTimeout(() => {
+                error.value = '';
+            }, 3000);
+        
+            return;
         }
 
-        setTimeout(() => {
-            error.value = '';
-        }, 3000);
 
         emit('definirPresupuesto', presupuesto.value);
     }
