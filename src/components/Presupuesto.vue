@@ -18,7 +18,6 @@
             return;
         }
 
-
         emit('definirPresupuesto', presupuesto.value);
     }
 </script>
