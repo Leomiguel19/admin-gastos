@@ -21,6 +21,12 @@
     modal.mostrar = true;
     modal.animar = true;
   }
+
+  const ocultarModal = () => {
+    console.log("Emite ocultar modal")
+    modal.mostrar = false;
+    modal.animar = false;
+  }
 </script>
 
 <template>
@@ -51,6 +57,7 @@
       </div>
       <Modal
         v-if="modal.mostrar"
+        @ocultar-modal="ocultarModal"
       />
     </main>
   </div>

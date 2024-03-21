@@ -5,7 +5,7 @@
     const presupuesto = ref(0)
     const error = ref('');
 
-    const emit = defineEmits('definirPresupuesto')
+    const emit = defineEmits(['definirPresupuesto'])
     
     const definirPresupuesto = () => {
         if(presupuesto.value <= 0 || presupuesto.value === ''){
