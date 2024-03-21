@@ -19,14 +19,16 @@
 
   const mostrarModal = () => {
     modal.mostrar = true;
-    modal.animar = true;
+    setTimeout(() => {
+      modal.animar = true;      
+    }, 300);
   }
 
   const ocultarModal = () => {
-    console.log("Emite ocultar modal")
     modal.mostrar = false;
-    modal.animar = false;
-  }
+    setTimeout(() => {
+      modal.animar = false;      
+    }, 300);  }
 </script>
 
 <template>
@@ -58,6 +60,7 @@
       <Modal
         v-if="modal.mostrar"
         @ocultar-modal="ocultarModal"
+        :modal="modal"
       />
     </main>
   </div>
