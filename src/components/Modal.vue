@@ -99,7 +99,7 @@
                     >
                         <option value="">-- Seleccione --</option>
                         <option value="ahorro">Ahorro</option>
-                        <option value="comida">comida</option>
+                        <option value="comida">Comida</option>
                         <option value="casa">Casa</option>
                         <option value="gastos">Gastos</option>
                         <option value="ocio">Ocio</option>

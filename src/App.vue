@@ -20,6 +20,8 @@
     fecha: Date.now()
   })
 
+  const gastos = ref([]);
+
   const definirPresupuesto = (cantidad) => {
     presupuesto.value = cantidad;
     disponible.value = cantidad;
@@ -40,6 +42,10 @@
   }
 
   const guardarGasto = () => {
+    gastos.value.push({
+      ...gasto,
+      id: 123,
+    })
     console.log("Guardando gasto");
   }
 </script>
