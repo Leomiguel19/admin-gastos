@@ -5,7 +5,7 @@
 
     const error = ref('');
 
-    const emit = defineEmits(['ocultarModal', 'update:nombre', 'update:cantidad', 'update:categoria'])
+    const emit = defineEmits(['ocultarModal', 'guardarGasto','update:nombre', 'update:cantidad', 'update:categoria'])
 
     const props = defineProps({
         modal: {
@@ -43,8 +43,7 @@
                 error.value = '';
             }, 3000);
         }
-
-        console.log('Emitiendo gasto');
+        emit('guardarGasto');
     }
 
 </script>
