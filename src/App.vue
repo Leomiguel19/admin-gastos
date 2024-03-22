@@ -36,7 +36,8 @@
     modal.mostrar = false;
     setTimeout(() => {
       modal.animar = false;      
-    }, 300);  }
+    }, 300);  
+  }
 </script>
 
 <template>
