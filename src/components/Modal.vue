@@ -33,10 +33,8 @@
             required: true
         },  
     })
-    console.log('props.cantidad: ' + props.cantidad)
 
     const old = props.cantidad;
-    console.log("old: "+old)
 
     const agregarGasto = () => {
         // Validar que no haya campos vacios 
@@ -97,7 +95,7 @@
                 class="nuevo-gasto"
                 @submit.prevent="agregarGasto"
             >
-                <legend>Agregar Gasto</legend>
+                <legend>{{ id ? "Guardar Cambios" :"Añadir Gasto"}}</legend>
 
                 <Alerta v-if="error">{{error}}</Alerta>
 
@@ -141,7 +139,7 @@
 
                 <input 
                     type="submit"
-                    value="Añadir Gasto"
+                    :value="[id ? 'Guardar Cambios' :'Añadir Gasto']"
                 >
             </form>
         </div>
