@@ -28,12 +28,12 @@
   });
 
   onMounted(() => {
-    const gastosStorage = localStorage.getItem("gastos");
+    const presupuestoStorage = localStorage.getItem("presupuesto");
     if(presupuestoStorage){
       presupuesto.value = Number(presupuestoStorage);
-      disponible.value = Number(disponibleStorage);
+      disponible.value = Number(presupuestoStorage);
     } 
-    const presupuestoStorage = localStorage.getItem("presupuesto");
+    const gastosStorage = localStorage.getItem("gastos");
     if(gastosStorage) gastos.value = JSON.parse(gastosStorage);
   }),
 
