@@ -5,7 +5,7 @@
 
     const error = ref('');
 
-    const emit = defineEmits(['ocultarModal', 'guardarGasto','update:nombre', 'update:cantidad', 'update:categoria'])
+    const emit = defineEmits(['ocultarModal', 'guardarGasto', 'eliminarGasto','update:nombre', 'update:cantidad', 'update:categoria'])
 
     const props = defineProps({
         modal: {
@@ -149,6 +149,7 @@
                 type="button"
                 class="btn-eliminar"
                 v-if="isEditing"
+                @click="$emit('eliminarGasto')"
             >
                 Eliminar
             </button>
