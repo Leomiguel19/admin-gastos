@@ -1,5 +1,5 @@
 <script setup>
-  import {ref, reactive, watch, computed} from 'vue';
+  import {ref, reactive, watch, computed, onMounted} from 'vue';
   import Presupuesto from "./components/Presupuesto.vue";
   import ControlPresupuesto from "./components/ControlPresupuesto.vue";
   import Modal from "./components/Modal.vue";
@@ -8,14 +8,11 @@
   import { generarId } from './helpers'
   import iconoNuevoGasto from './assets/img/nuevo-gasto.svg'
 
-  const modal = reactive({
-    mostrar: false,
-    animar: false,
-  });
   const presupuesto = ref(0);
   const disponible = ref(0);
   const gastado = ref(0);
   const filtro = ref('');
+  const gastos = ref([]);
 
   const gasto = reactive({
     nombre: '',
@@ -25,12 +22,28 @@
     fecha: Date.now()
   })
 
-  const gastos = ref([]);
+  const modal = reactive({
+    mostrar: false,
+    animar: false,
+  });
+
+  onMounted(() => {
+    const gastosStorage = localStorage.getItem("gastos");
+    if(presupuestoStorage){
+      presupuesto.value = Number(presupuestoStorage);
+      disponible.value = Number(disponibleStorage);
+    } 
+    const presupuestoStorage = localStorage.getItem("presupuesto");
+    if(gastosStorage) gastos.value = JSON.parse(gastosStorage);
+  }),
+
 
   watch(gastos, () => {
     const totalGastado = gastos.value.reduce((total, gasto) => gasto.cantidad + total, 0);
     gastado.value = totalGastado;
     disponible.value = presupuesto.value - gastado.value;
+
+    localStorage.setItem("gastos", JSON.stringify(gastos.value));
   }, {
     deep: true,
   })
@@ -41,6 +54,10 @@
     }
   }, {
     deep: true,
+  })
+
+  watch(presupuesto, () => {
+    localStorage.setItem("presupuesto", presupuesto.value);
   })
 
   const definirPresupuesto = (cantidad) => {
